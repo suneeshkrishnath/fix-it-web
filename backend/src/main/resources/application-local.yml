@@ -1,0 +1,9 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+
+app:
+  security:
+    jwt:
+      secret: local-dev-only-secret-change-me-0123456789-0123456789

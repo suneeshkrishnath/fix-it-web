@@ -1,0 +1,759 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.fixit:fixit-admin-backend >--------------------
+[INFO] Building fixit-admin-backend 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- openapi-generator:7.12.0:generate (generate-admin-api) @ fixit-admin-backend ---
+[INFO] Generating with dryRun=false
+[INFO] No .openapi-generator-ignore file found.
+[INFO] OpenAPI Generator: spring (server)
+[INFO] Generator 'spring' is considered stable.
+[INFO] ----------------------------------
+[INFO] Environment variable JAVA_POST_PROCESS_FILE not defined so the Java code may not be properly formatted. To define it, try 'export JAVA_POST_PROCESS_FILE="/usr/local/bin/clang-format -i"' (Linux/Mac)
+[INFO] NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).
+[INFO] Invoker Package Name, originally not set, is now derived from api package name: com.fixit.admin
+[INFO] Inline schema created as uploadTenancyAgreement_request. To have complete control of the model name, set the `title` field or use the modelNameMapping option (e.g. --model-name-mappings uploadTenancyAgreement_request=NewModel,ModelA=NewModelA in CLI) or inlineSchemaNameMapping option (--inline-schema-name-mappings uploadTenancyAgreement_request=NewModel,ModelA=NewModelA in CLI).
+[INFO] Inline schema created as ProblemDetail_errors_inner. To have complete control of the model name, set the `title` field or use the modelNameMapping option (e.g. --model-name-mappings ProblemDetail_errors_inner=NewModel,ModelA=NewModelA in CLI) or inlineSchemaNameMapping option (--inline-schema-name-mappings ProblemDetail_errors_inner=NewModel,ModelA=NewModelA in CLI).
+[INFO] Processing operation login
+[INFO] Processing operation refreshToken
+[INFO] Processing operation logout
+[INFO] Processing operation getCurrentUser
+[INFO] Processing operation listAdminUsers
+[INFO] Processing operation createAdminUser
+[INFO] Processing operation getAdminUser
+[INFO] Processing operation updateAdminUser
+[INFO] Processing operation deactivateAdminUser
+[INFO] Processing operation listRoles
+[INFO] Processing operation createRole
+[INFO] Processing operation getRole
+[INFO] Processing operation updateRole
+[INFO] Processing operation listPermissions
+[INFO] Processing operation listCampuses
+[INFO] Processing operation createCampus
+[INFO] Processing operation getCampus
+[INFO] Processing operation updateCampus
+[INFO] Processing operation deactivateCampus
+[INFO] Processing operation listBuildings
+[INFO] Processing operation createBuilding
+[INFO] Processing operation getBuilding
+[INFO] Processing operation updateBuilding
+[INFO] Processing operation deactivateBuilding
+[INFO] Processing operation listApartments
+[INFO] Processing operation createApartment
+[INFO] Processing operation getApartment
+[INFO] Processing operation updateApartment
+[INFO] Processing operation deactivateApartment
+[INFO] Processing operation listResidents
+[INFO] Processing operation createResident
+[INFO] Processing operation getResident
+[INFO] Processing operation updateResident
+[INFO] Processing operation deactivateResident
+[INFO] Processing operation listTenancies
+[INFO] Processing operation createTenancy
+[INFO] Processing operation getTenancy
+[INFO] Processing operation updateTenancy
+[INFO] Processing operation endTenancy
+[INFO] Processing operation downloadTenancyAgreement
+[INFO] Processing operation uploadTenancyAgreement
+[INFO] Processing operation listTechnicians
+[INFO] Processing operation createTechnician
+[INFO] Processing operation getTechnician
+[INFO] Processing operation updateTechnician
+[INFO] Processing operation updateTechnicianAvailability
+[INFO] Processing operation deactivateTechnician
+[INFO] Processing operation listRequests
+[INFO] Processing operation getRequest
+[INFO] Processing operation downloadRequestAttachment
+[INFO] Processing operation reviewRequest
+[INFO] Processing operation reassignTechnician
+[INFO] Processing operation assignTechnician
+[INFO] Processing operation getRequestAllowedActions
+[INFO] Processing operation getRequestHistory
+[INFO] Processing operation getRequestWorkLog
+[INFO] Processing operation approveCompletion
+[INFO] Processing operation decideReopen
+[INFO] Processing operation scheduleAppointment
+[INFO] Processing operation listAppointmentProposals
+[INFO] Processing operation getAppointmentProposal
+[INFO] Processing operation decideAppointmentProposal
+[INFO] Processing operation listNotifications
+[INFO] Processing operation markNotificationRead
+[INFO] Processing operation reportRequests
+[INFO] Processing operation reportAssignments
+[INFO] Processing operation reportWorkTime
+[INFO] Processing operation reportAppointments
+[INFO] Processing operation reportStatusOutcomes
+[INFO] Processing operation listAuditEvents
+[INFO] Processing operation getDashboardSummary
+[INFO] Model uploadTenancyAgreement_request not generated since it's marked as unused (due to form parameters) and `skipFormModel` (global property) set to true (default)
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\AdminUser.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\AdminUserCreate.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\AdminUserPage.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\AdminUserUpdate.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Apartment.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\ApartmentPage.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\ApartmentWrite.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Appointment.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\AppointmentProposal.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\AppointmentWrite.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\AssignmentWrite.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Attachment.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\AuditEvent.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\AuditEventPage.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Audited.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\AvailabilityUpdate.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Building.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\BuildingPage.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\BuildingWrite.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Campus.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\CampusPage.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\CampusWrite.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\CommentBody.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\DashboardSummary.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\DecisionState.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\EndTenancyRequest.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\HistoryEntry.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\LoginRequest.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Notification.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\NotificationPage.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\PageMeta.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Permission.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Priority.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\ProblemDetail.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\ProblemDetailErrorsInner.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\ProposalDecision.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\ProposalPage.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\ProposalStatus.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\RefreshRequest.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\ReopenDecision.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\ReportResult.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\RequestAction.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\RequestDetail.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\RequestPage.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\RequestStatus.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\RequestSummary.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Resident.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\ResidentPage.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\ResidentWrite.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\ReviewDecision.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Role.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\RoleWrite.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Technician.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\TechnicianPage.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\TechnicianWrite.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\Tenancy.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\TenancyPage.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\TenancyStatus.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\TenancyWrite.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\TokenResponse.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\WorkLog.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\model\WorkLogEntry.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\AdminUsersApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\ApartmentsApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\AppointmentsApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\AuditApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\AuthApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\BuildingsApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\CampusesApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\DashboardApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\NotificationsApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\ReportsApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\RequestsApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\ResidentsApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\RolesApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\TechniciansApi.java
+[INFO] writing file c:\_D\work_dir\full_stack\fix-it-web\backend\target\generated-sources\openapi\src\main\java\com\fixit\admin\api\TenanciesApi.java
+[INFO] Skipping generation of Webhooks.
+[INFO] Skipping generation of supporting files.
+################################################################################
+# Thanks for using OpenAPI Generator.                                          #
+# Please consider donation to help us maintain this project ?                 #
+# https://opencollective.com/openapi_generator/donate                          #
+################################################################################
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ fixit-admin-backend ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ fixit-admin-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 95 source files with javac [debug parameters release 21] to target\classes
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING : 
+[INFO] -------------------------------------------------------------
+[WARNING] The following options were not recognized by any processor: '[mapstruct.unmappedTargetPolicy, mapstruct.defaultComponentModel]'
+[INFO] 1 warning
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[92,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[97,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[102,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[143,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[190,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[195,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[244,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[294,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[299,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RolesApi.java:[79,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RolesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RolesApi.java:[120,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RolesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RolesApi.java:[160,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RolesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RolesApi.java:[200,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RolesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RolesApi.java:[244,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RolesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AppointmentsApi.java:[93,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AppointmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AppointmentsApi.java:[98,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AppointmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AppointmentsApi.java:[139,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AppointmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AppointmentsApi.java:[186,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AppointmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AppointmentsApi.java:[230,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AppointmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AuditApi.java:[90,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AuditApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AuthApi.java:[78,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AuthApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AuthApi.java:[123,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AuthApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AuthApi.java:[128,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AuthApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AuthApi.java:[201,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AuthApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AuthApi.java:[206,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.AuthApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/DashboardApi.java:[74,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.DashboardApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/NotificationsApi.java:[80,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.NotificationsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ApartmentsApi.java:[80,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ApartmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ApartmentsApi.java:[127,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ApartmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ApartmentsApi.java:[132,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ApartmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ApartmentsApi.java:[173,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ApartmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ApartmentsApi.java:[228,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ApartmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ApartmentsApi.java:[272,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ApartmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/BuildingsApi.java:[80,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.BuildingsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/BuildingsApi.java:[127,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.BuildingsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/BuildingsApi.java:[132,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.BuildingsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/BuildingsApi.java:[173,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.BuildingsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/BuildingsApi.java:[224,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.BuildingsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/BuildingsApi.java:[268,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.BuildingsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/CampusesApi.java:[80,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.CampusesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/CampusesApi.java:[129,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.CampusesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/CampusesApi.java:[134,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.CampusesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/CampusesApi.java:[175,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.CampusesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/CampusesApi.java:[224,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.CampusesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/CampusesApi.java:[268,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.CampusesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[82,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[87,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[133,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[138,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[184,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[189,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[235,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[240,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[286,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[291,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[100,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[105,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[155,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[160,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[212,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[217,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[298,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[303,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[346,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[387,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[428,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[491,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[543,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[548,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[600,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[605,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ResidentsApi.java:[80,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ResidentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ResidentsApi.java:[127,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ResidentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ResidentsApi.java:[132,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ResidentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ResidentsApi.java:[173,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ResidentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ResidentsApi.java:[222,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ResidentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ResidentsApi.java:[266,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.ResidentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[90,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[95,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[142,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[186,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[227,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[280,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[324,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[368,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[81,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[128,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[133,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[174,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[227,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[271,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[315,21] cannot find symbol
+  symbol:   variable ApiUtil
+  location: interface com.fixit.admin.api.TechniciansApi
+[INFO] 92 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  41.963 s
+[INFO] Finished at: 2026-10-27T19:35:52+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project fixit-admin-backend: Compilation failure: Compilation failure: 
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[92,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[97,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[102,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[143,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[190,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[195,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[244,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[294,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AdminUsersApi.java:[299,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AdminUsersApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RolesApi.java:[79,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RolesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RolesApi.java:[120,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RolesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RolesApi.java:[160,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RolesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RolesApi.java:[200,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RolesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RolesApi.java:[244,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RolesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AppointmentsApi.java:[93,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AppointmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AppointmentsApi.java:[98,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AppointmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AppointmentsApi.java:[139,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AppointmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AppointmentsApi.java:[186,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AppointmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AppointmentsApi.java:[230,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AppointmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AuditApi.java:[90,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AuditApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AuthApi.java:[78,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AuthApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AuthApi.java:[123,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AuthApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AuthApi.java:[128,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AuthApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AuthApi.java:[201,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AuthApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/AuthApi.java:[206,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.AuthApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/DashboardApi.java:[74,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.DashboardApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/NotificationsApi.java:[80,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.NotificationsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ApartmentsApi.java:[80,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ApartmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ApartmentsApi.java:[127,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ApartmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ApartmentsApi.java:[132,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ApartmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ApartmentsApi.java:[173,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ApartmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ApartmentsApi.java:[228,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ApartmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ApartmentsApi.java:[272,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ApartmentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/BuildingsApi.java:[80,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.BuildingsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/BuildingsApi.java:[127,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.BuildingsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/BuildingsApi.java:[132,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.BuildingsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/BuildingsApi.java:[173,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.BuildingsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/BuildingsApi.java:[224,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.BuildingsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/BuildingsApi.java:[268,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.BuildingsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/CampusesApi.java:[80,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.CampusesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/CampusesApi.java:[129,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.CampusesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/CampusesApi.java:[134,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.CampusesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/CampusesApi.java:[175,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.CampusesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/CampusesApi.java:[224,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.CampusesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/CampusesApi.java:[268,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.CampusesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[82,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[87,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[133,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[138,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[184,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[189,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[235,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[240,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[286,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ReportsApi.java:[291,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ReportsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[100,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[105,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[155,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[160,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[212,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[217,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[298,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[303,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[346,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[387,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[428,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[491,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[543,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[548,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[600,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/RequestsApi.java:[605,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.RequestsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ResidentsApi.java:[80,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ResidentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ResidentsApi.java:[127,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ResidentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ResidentsApi.java:[132,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ResidentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ResidentsApi.java:[173,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ResidentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ResidentsApi.java:[222,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ResidentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/ResidentsApi.java:[266,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.ResidentsApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[90,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[95,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[142,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[186,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[227,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[280,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[324,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TenanciesApi.java:[368,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TenanciesApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[81,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[128,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[133,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[174,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[227,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[271,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] /c:/_D/work_dir/full_stack/fix-it-web/backend/target/generated-sources/openapi/src/main/java/com/fixit/admin/api/TechniciansApi.java:[315,21] cannot find symbol
+[ERROR]   symbol:   variable ApiUtil
+[ERROR]   location: interface com.fixit.admin.api.TechniciansApi
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -1,0 +1,10 @@
+backend/target/
+backend/data/
+admin-ui/node_modules/
+admin-ui/dist/
+admin-ui/.angular/
+admin-ui/src/app/api/
+.idea/
+.vscode/
+*.iml
+.env

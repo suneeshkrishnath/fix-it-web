@@ -1,0 +1,1203 @@
+openapi: 3.0.3
+info:
+  title: Fix-it Admin API
+  version: 0.1.0
+  description: |
+    Admin web API for Fix-it. Tenant and technician (mobile) flows are out of scope for this spec.
+    Authorization is enforced server-side by role permissions. Every mutating call records actor and timestamp in the audit log.
+servers:
+  - url: http://localhost:8080/api/v1
+security:
+  - bearerAuth: []
+tags:
+  - name: Auth
+  - name: AdminUsers
+  - name: Roles
+  - name: Campuses
+  - name: Buildings
+  - name: Apartments
+  - name: Residents
+  - name: Tenancies
+  - name: Technicians
+  - name: Requests
+  - name: Appointments
+  - name: Notifications
+  - name: Reports
+  - name: Audit
+  - name: Dashboard
+
+paths:
+  /auth/login:
+    post:
+      tags: [Auth]
+      operationId: login
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LoginRequest' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/TokenResponse' } } } }
+        '401': { $ref: '#/components/responses/Error' }
+  /auth/refresh:
+    post:
+      tags: [Auth]
+      operationId: refreshToken
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/RefreshRequest' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/TokenResponse' } } } }
+        '401': { $ref: '#/components/responses/Error' }
+  /auth/logout:
+    post:
+      tags: [Auth]
+      operationId: logout
+      responses:
+        '204': { description: Logged out }
+  /auth/me:
+    get:
+      tags: [Auth]
+      operationId: getCurrentUser
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/AdminUser' } } } }
+
+  /admin-users:
+    get:
+      tags: [AdminUsers]
+      operationId: listAdminUsers
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Active'
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/AdminUserPage' } } } }
+    post:
+      tags: [AdminUsers]
+      operationId: createAdminUser
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/AdminUserCreate' } } }
+      responses:
+        '201': { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/AdminUser' } } } }
+        '400': { $ref: '#/components/responses/Error' }
+        '409': { $ref: '#/components/responses/Error' }
+  /admin-users/{id}:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [AdminUsers]
+      operationId: getAdminUser
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/AdminUser' } } } }
+        '404': { $ref: '#/components/responses/Error' }
+    put:
+      tags: [AdminUsers]
+      operationId: updateAdminUser
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/AdminUserUpdate' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/AdminUser' } } } }
+        '404': { $ref: '#/components/responses/Error' }
+  /admin-users/{id}/deactivate:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [AdminUsers]
+      operationId: deactivateAdminUser
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/AdminUser' } } } }
+
+  /roles:
+    get:
+      tags: [Roles]
+      operationId: listRoles
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/Role' } } } } }
+    post:
+      tags: [Roles]
+      operationId: createRole
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/RoleWrite' } } }
+      responses:
+        '201': { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/Role' } } } }
+  /roles/{id}:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [Roles]
+      operationId: getRole
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Role' } } } }
+    put:
+      tags: [Roles]
+      operationId: updateRole
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/RoleWrite' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Role' } } } }
+  /permissions:
+    get:
+      tags: [Roles]
+      operationId: listPermissions
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/Permission' } } } } }
+
+  /campuses:
+    get:
+      tags: [Campuses]
+      operationId: listCampuses
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Active'
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/CampusPage' } } } }
+    post:
+      tags: [Campuses]
+      operationId: createCampus
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/CampusWrite' } } }
+      responses:
+        '201': { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/Campus' } } } }
+  /campuses/{id}:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [Campuses]
+      operationId: getCampus
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Campus' } } } }
+    put:
+      tags: [Campuses]
+      operationId: updateCampus
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/CampusWrite' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Campus' } } } }
+  /campuses/{id}/deactivate:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Campuses]
+      operationId: deactivateCampus
+      description: Rejected with 409 if active buildings, tenancies or requests reference it.
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Campus' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+
+  /buildings:
+    get:
+      tags: [Buildings]
+      operationId: listBuildings
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Active'
+        - { name: campusId, in: query, schema: { type: string, format: uuid } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/BuildingPage' } } } }
+    post:
+      tags: [Buildings]
+      operationId: createBuilding
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/BuildingWrite' } } }
+      responses:
+        '201': { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/Building' } } } }
+  /buildings/{id}:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [Buildings]
+      operationId: getBuilding
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Building' } } } }
+    put:
+      tags: [Buildings]
+      operationId: updateBuilding
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/BuildingWrite' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Building' } } } }
+  /buildings/{id}/deactivate:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Buildings]
+      operationId: deactivateBuilding
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Building' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+
+  /apartments:
+    get:
+      tags: [Apartments]
+      operationId: listApartments
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Active'
+        - { name: buildingId, in: query, schema: { type: string, format: uuid } }
+        - { name: campusId, in: query, schema: { type: string, format: uuid } }
+        - { name: occupied, in: query, schema: { type: boolean } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/ApartmentPage' } } } }
+    post:
+      tags: [Apartments]
+      operationId: createApartment
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/ApartmentWrite' } } }
+      responses:
+        '201': { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/Apartment' } } } }
+  /apartments/{id}:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [Apartments]
+      operationId: getApartment
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Apartment' } } } }
+    put:
+      tags: [Apartments]
+      operationId: updateApartment
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/ApartmentWrite' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Apartment' } } } }
+  /apartments/{id}/deactivate:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Apartments]
+      operationId: deactivateApartment
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Apartment' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+
+  /residents:
+    get:
+      tags: [Residents]
+      operationId: listResidents
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Active'
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/ResidentPage' } } } }
+    post:
+      tags: [Residents]
+      operationId: createResident
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/ResidentWrite' } } }
+      responses:
+        '201': { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/Resident' } } } }
+  /residents/{id}:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [Residents]
+      operationId: getResident
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Resident' } } } }
+    put:
+      tags: [Residents]
+      operationId: updateResident
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/ResidentWrite' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Resident' } } } }
+  /residents/{id}/deactivate:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Residents]
+      operationId: deactivateResident
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Resident' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+
+  /tenancies:
+    get:
+      tags: [Tenancies]
+      operationId: listTenancies
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Search'
+        - { name: residentId, in: query, schema: { type: string, format: uuid } }
+        - { name: apartmentId, in: query, schema: { type: string, format: uuid } }
+        - { name: status, in: query, schema: { $ref: '#/components/schemas/TenancyStatus' } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/TenancyPage' } } } }
+    post:
+      tags: [Tenancies]
+      operationId: createTenancy
+      description: Apartment must be active and not already have an active tenancy overlapping the dates.
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/TenancyWrite' } } }
+      responses:
+        '201': { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/Tenancy' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+  /tenancies/{id}:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [Tenancies]
+      operationId: getTenancy
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Tenancy' } } } }
+    put:
+      tags: [Tenancies]
+      operationId: updateTenancy
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/TenancyWrite' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Tenancy' } } } }
+  /tenancies/{id}/end:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Tenancies]
+      operationId: endTenancy
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/EndTenancyRequest' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Tenancy' } } } }
+  /tenancies/{id}/agreement:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Tenancies]
+      operationId: uploadTenancyAgreement
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file: { type: string, format: binary }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Tenancy' } } } }
+    get:
+      tags: [Tenancies]
+      operationId: downloadTenancyAgreement
+      responses:
+        '200':
+          description: Agreement file
+          content:
+            application/octet-stream:
+              schema: { type: string, format: binary }
+        '404': { $ref: '#/components/responses/Error' }
+
+  /technicians:
+    get:
+      tags: [Technicians]
+      operationId: listTechnicians
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Active'
+        - { name: specialty, in: query, schema: { type: string } }
+        - { name: available, in: query, schema: { type: boolean } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/TechnicianPage' } } } }
+    post:
+      tags: [Technicians]
+      operationId: createTechnician
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/TechnicianWrite' } } }
+      responses:
+        '201': { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/Technician' } } } }
+  /technicians/{id}:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [Technicians]
+      operationId: getTechnician
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Technician' } } } }
+    put:
+      tags: [Technicians]
+      operationId: updateTechnician
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/TechnicianWrite' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Technician' } } } }
+  /technicians/{id}/availability:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    put:
+      tags: [Technicians]
+      operationId: updateTechnicianAvailability
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/AvailabilityUpdate' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Technician' } } } }
+  /technicians/{id}/deactivate:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Technicians]
+      operationId: deactivateTechnician
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Technician' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+
+  /requests:
+    get:
+      tags: [Requests]
+      operationId: listRequests
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Search'
+        - { name: status, in: query, schema: { type: array, items: { $ref: '#/components/schemas/RequestStatus' } } }
+        - { name: category, in: query, schema: { type: string } }
+        - { name: priority, in: query, schema: { $ref: '#/components/schemas/Priority' } }
+        - { name: campusId, in: query, schema: { type: string, format: uuid } }
+        - { name: buildingId, in: query, schema: { type: string, format: uuid } }
+        - { name: technicianId, in: query, schema: { type: string, format: uuid } }
+        - { name: createdFrom, in: query, schema: { type: string, format: date } }
+        - { name: createdTo, in: query, schema: { type: string, format: date } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/RequestPage' } } } }
+  /requests/{id}:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [Requests]
+      operationId: getRequest
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/RequestDetail' } } } }
+        '404': { $ref: '#/components/responses/Error' }
+  /requests/{id}/attachments/{attachmentId}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+      - { name: attachmentId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      tags: [Requests]
+      operationId: downloadRequestAttachment
+      responses:
+        '200': { description: File, content: { application/octet-stream: { schema: { type: string, format: binary } } } }
+  /requests/{id}/review:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Requests]
+      operationId: reviewRequest
+      description: Reason is required for REJECT and REQUEST_INFO.
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/ReviewDecision' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/RequestDetail' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+  /requests/{id}/assignment:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Requests]
+      operationId: assignTechnician
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/AssignmentWrite' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/RequestDetail' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+    put:
+      tags: [Requests]
+      operationId: reassignTechnician
+      description: Reason is required.
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/AssignmentWrite' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/RequestDetail' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+  /requests/{id}/allowed-actions:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [Requests]
+      operationId: getRequestAllowedActions
+      description: Admin actions valid for the current status and the caller's permissions.
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/RequestAction' } } } } }
+  /requests/{id}/history:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [Requests]
+      operationId: getRequestHistory
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/HistoryEntry' } } } } }
+  /requests/{id}/work-log:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [Requests]
+      operationId: getRequestWorkLog
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/WorkLog' } } } }
+  /requests/{id}/completion/approve:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Requests]
+      operationId: approveCompletion
+      description: Allowed only after tenant acceptance. Closes the request.
+      requestBody:
+        content: { application/json: { schema: { $ref: '#/components/schemas/CommentBody' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/RequestDetail' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+  /requests/{id}/reopen/decision:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Requests]
+      operationId: decideReopen
+      description: Applies to tenant reopen requests made within 24 hours of closure.
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/ReopenDecision' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/RequestDetail' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+
+  /requests/{id}/appointment:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Appointments]
+      operationId: scheduleAppointment
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/AppointmentWrite' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/RequestDetail' } } } }
+  /appointment-proposals:
+    get:
+      tags: [Appointments]
+      operationId: listAppointmentProposals
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - { name: status, in: query, schema: { $ref: '#/components/schemas/ProposalStatus' } }
+        - { name: requestId, in: query, schema: { type: string, format: uuid } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/ProposalPage' } } } }
+  /appointment-proposals/{id}:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    get:
+      tags: [Appointments]
+      operationId: getAppointmentProposal
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/AppointmentProposal' } } } }
+  /appointment-proposals/{id}/decision:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Appointments]
+      operationId: decideAppointmentProposal
+      description: Admin decision. The appointment changes only after both tenant and admin approve; any rejection keeps the current appointment.
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/ProposalDecision' } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/AppointmentProposal' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+
+  /notifications:
+    get:
+      tags: [Notifications]
+      operationId: listNotifications
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - { name: unread, in: query, schema: { type: boolean } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/NotificationPage' } } } }
+  /notifications/{id}/read:
+    parameters: [ { $ref: '#/components/parameters/Id' } ]
+    post:
+      tags: [Notifications]
+      operationId: markNotificationRead
+      responses:
+        '204': { description: Marked read }
+
+  /reports/requests:
+    get:
+      tags: [Reports]
+      operationId: reportRequests
+      parameters: [ { $ref: '#/components/parameters/From' }, { $ref: '#/components/parameters/To' }, { $ref: '#/components/parameters/Format' } ]
+      responses:
+        '200': { $ref: '#/components/responses/Report' }
+  /reports/assignments:
+    get:
+      tags: [Reports]
+      operationId: reportAssignments
+      parameters: [ { $ref: '#/components/parameters/From' }, { $ref: '#/components/parameters/To' }, { $ref: '#/components/parameters/Format' } ]
+      responses:
+        '200': { $ref: '#/components/responses/Report' }
+  /reports/work-time:
+    get:
+      tags: [Reports]
+      operationId: reportWorkTime
+      parameters: [ { $ref: '#/components/parameters/From' }, { $ref: '#/components/parameters/To' }, { $ref: '#/components/parameters/Format' } ]
+      responses:
+        '200': { $ref: '#/components/responses/Report' }
+  /reports/appointments:
+    get:
+      tags: [Reports]
+      operationId: reportAppointments
+      parameters: [ { $ref: '#/components/parameters/From' }, { $ref: '#/components/parameters/To' }, { $ref: '#/components/parameters/Format' } ]
+      responses:
+        '200': { $ref: '#/components/responses/Report' }
+  /reports/status-outcomes:
+    get:
+      tags: [Reports]
+      operationId: reportStatusOutcomes
+      parameters: [ { $ref: '#/components/parameters/From' }, { $ref: '#/components/parameters/To' }, { $ref: '#/components/parameters/Format' } ]
+      responses:
+        '200': { $ref: '#/components/responses/Report' }
+
+  /audit-events:
+    get:
+      tags: [Audit]
+      operationId: listAuditEvents
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - { name: actorId, in: query, schema: { type: string, format: uuid } }
+        - { name: entityType, in: query, schema: { type: string } }
+        - { name: entityId, in: query, schema: { type: string, format: uuid } }
+        - $ref: '#/components/parameters/From'
+        - $ref: '#/components/parameters/To'
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/AuditEventPage' } } } }
+  /dashboard/summary:
+    get:
+      tags: [Dashboard]
+      operationId: getDashboardSummary
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/DashboardSummary' } } } }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    Id: { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+    Page: { name: page, in: query, schema: { type: integer, minimum: 0, default: 0 } }
+    Size: { name: size, in: query, schema: { type: integer, minimum: 1, maximum: 100, default: 20 } }
+    Sort: { name: sort, in: query, description: 'field,asc|desc', schema: { type: string } }
+    Search: { name: q, in: query, schema: { type: string } }
+    Active: { name: active, in: query, schema: { type: boolean } }
+    From: { name: from, in: query, schema: { type: string, format: date } }
+    To: { name: to, in: query, schema: { type: string, format: date } }
+    Format: { name: format, in: query, schema: { type: string, enum: [json, csv], default: json } }
+
+  responses:
+    Error:
+      description: Error (RFC 7807)
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/ProblemDetail' }
+    Report:
+      description: Report data
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ReportResult' }
+        text/csv:
+          schema: { type: string }
+
+  schemas:
+    ProblemDetail:
+      type: object
+      properties:
+        type: { type: string }
+        title: { type: string }
+        status: { type: integer }
+        detail: { type: string }
+        instance: { type: string }
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field: { type: string }
+              message: { type: string }
+
+    PageMeta:
+      type: object
+      properties:
+        page: { type: integer }
+        size: { type: integer }
+        totalElements: { type: integer, format: int64 }
+        totalPages: { type: integer }
+
+    Audited:
+      type: object
+      properties:
+        id: { type: string, format: uuid, readOnly: true }
+        active: { type: boolean, readOnly: true }
+        createdAt: { type: string, format: date-time, readOnly: true }
+        createdBy: { type: string, readOnly: true }
+        updatedAt: { type: string, format: date-time, readOnly: true }
+        updatedBy: { type: string, readOnly: true }
+
+    # Auth
+    LoginRequest:
+      type: object
+      required: [username, password]
+      properties:
+        username: { type: string }
+        password: { type: string, format: password }
+    RefreshRequest:
+      type: object
+      required: [refreshToken]
+      properties:
+        refreshToken: { type: string }
+    TokenResponse:
+      type: object
+      properties:
+        accessToken: { type: string }
+        refreshToken: { type: string }
+        expiresIn: { type: integer, description: Seconds }
+        user: { $ref: '#/components/schemas/AdminUser' }
+
+    # Admin users and roles
+    Permission:
+      type: object
+      properties:
+        code: { type: string, example: PROPERTY_WRITE }
+        description: { type: string }
+    RoleWrite:
+      type: object
+      required: [name, permissions]
+      properties:
+        name: { type: string }
+        description: { type: string }
+        permissions: { type: array, items: { type: string }, description: Permission codes }
+    Role:
+      allOf:
+        - $ref: '#/components/schemas/RoleWrite'
+        - type: object
+          properties:
+            id: { type: string, format: uuid }
+    AdminUserCreate:
+      type: object
+      required: [username, fullName, email, password, roleIds]
+      properties:
+        username: { type: string }
+        fullName: { type: string }
+        email: { type: string, format: email }
+        phone: { type: string }
+        password: { type: string, format: password }
+        roleIds: { type: array, items: { type: string, format: uuid } }
+    AdminUserUpdate:
+      type: object
+      required: [fullName, email, roleIds]
+      properties:
+        fullName: { type: string }
+        email: { type: string, format: email }
+        phone: { type: string }
+        roleIds: { type: array, items: { type: string, format: uuid } }
+        password: { type: string, format: password, description: Optional reset }
+    AdminUser:
+      allOf:
+        - $ref: '#/components/schemas/Audited'
+        - type: object
+          properties:
+            username: { type: string }
+            fullName: { type: string }
+            email: { type: string }
+            phone: { type: string }
+            roles: { type: array, items: { $ref: '#/components/schemas/Role' } }
+            permissions: { type: array, items: { type: string } }
+    AdminUserPage:
+      allOf:
+        - $ref: '#/components/schemas/PageMeta'
+        - type: object
+          properties:
+            content: { type: array, items: { $ref: '#/components/schemas/AdminUser' } }
+
+    # Property
+    CampusWrite:
+      type: object
+      required: [code, name]
+      properties:
+        code: { type: string }
+        name: { type: string }
+        address: { type: string }
+    Campus:
+      allOf:
+        - $ref: '#/components/schemas/Audited'
+        - $ref: '#/components/schemas/CampusWrite'
+    CampusPage:
+      allOf:
+        - $ref: '#/components/schemas/PageMeta'
+        - type: object
+          properties:
+            content: { type: array, items: { $ref: '#/components/schemas/Campus' } }
+    BuildingWrite:
+      type: object
+      required: [campusId, code, name]
+      properties:
+        campusId: { type: string, format: uuid }
+        code: { type: string }
+        name: { type: string }
+        floors: { type: integer }
+    Building:
+      allOf:
+        - $ref: '#/components/schemas/Audited'
+        - $ref: '#/components/schemas/BuildingWrite'
+        - type: object
+          properties:
+            campusName: { type: string, readOnly: true }
+    BuildingPage:
+      allOf:
+        - $ref: '#/components/schemas/PageMeta'
+        - type: object
+          properties:
+            content: { type: array, items: { $ref: '#/components/schemas/Building' } }
+    ApartmentWrite:
+      type: object
+      required: [buildingId, unitNumber]
+      properties:
+        buildingId: { type: string, format: uuid }
+        unitNumber: { type: string }
+        floor: { type: integer }
+        bedrooms: { type: integer }
+        areaSqm: { type: number }
+    Apartment:
+      allOf:
+        - $ref: '#/components/schemas/Audited'
+        - $ref: '#/components/schemas/ApartmentWrite'
+        - type: object
+          properties:
+            buildingName: { type: string, readOnly: true }
+            campusId: { type: string, format: uuid, readOnly: true }
+            campusName: { type: string, readOnly: true }
+            occupied: { type: boolean, readOnly: true }
+    ApartmentPage:
+      allOf:
+        - $ref: '#/components/schemas/PageMeta'
+        - type: object
+          properties:
+            content: { type: array, items: { $ref: '#/components/schemas/Apartment' } }
+
+    # Residents and tenancy
+    ResidentWrite:
+      type: object
+      required: [fullName, phone]
+      properties:
+        fullName: { type: string }
+        email: { type: string, format: email }
+        phone: { type: string }
+        nationalId: { type: string }
+    Resident:
+      allOf:
+        - $ref: '#/components/schemas/Audited'
+        - $ref: '#/components/schemas/ResidentWrite'
+    ResidentPage:
+      allOf:
+        - $ref: '#/components/schemas/PageMeta'
+        - type: object
+          properties:
+            content: { type: array, items: { $ref: '#/components/schemas/Resident' } }
+    TenancyStatus:
+      type: string
+      enum: [UPCOMING, ACTIVE, ENDED]
+    TenancyWrite:
+      type: object
+      required: [residentId, apartmentId, startDate]
+      properties:
+        residentId: { type: string, format: uuid }
+        apartmentId: { type: string, format: uuid }
+        startDate: { type: string, format: date }
+        endDate: { type: string, format: date }
+        notes: { type: string }
+    EndTenancyRequest:
+      type: object
+      required: [endDate]
+      properties:
+        endDate: { type: string, format: date }
+        reason: { type: string }
+    Tenancy:
+      allOf:
+        - $ref: '#/components/schemas/Audited'
+        - $ref: '#/components/schemas/TenancyWrite'
+        - type: object
+          properties:
+            status: { $ref: '#/components/schemas/TenancyStatus' }
+            residentName: { type: string, readOnly: true }
+            apartmentLabel: { type: string, readOnly: true }
+            agreementFileName: { type: string, readOnly: true }
+    TenancyPage:
+      allOf:
+        - $ref: '#/components/schemas/PageMeta'
+        - type: object
+          properties:
+            content: { type: array, items: { $ref: '#/components/schemas/Tenancy' } }
+
+    # Technicians
+    TechnicianWrite:
+      type: object
+      required: [fullName, phone, specialties]
+      properties:
+        fullName: { type: string }
+        email: { type: string, format: email }
+        phone: { type: string }
+        specialties: { type: array, items: { type: string } }
+    AvailabilityUpdate:
+      type: object
+      required: [available]
+      properties:
+        available: { type: boolean }
+        note: { type: string }
+    Technician:
+      allOf:
+        - $ref: '#/components/schemas/Audited'
+        - $ref: '#/components/schemas/TechnicianWrite'
+        - type: object
+          properties:
+            available: { type: boolean }
+            availabilityNote: { type: string }
+            openAssignments: { type: integer, readOnly: true }
+    TechnicianPage:
+      allOf:
+        - $ref: '#/components/schemas/PageMeta'
+        - type: object
+          properties:
+            content: { type: array, items: { $ref: '#/components/schemas/Technician' } }
+
+    # Requests
+    Priority:
+      type: string
+      enum: [LOW, MEDIUM, HIGH, URGENT]
+    RequestAction:
+      type: string
+      enum: [APPROVE, REJECT, REQUEST_INFO, ASSIGN, REASSIGN, SCHEDULE_APPOINTMENT, DECIDE_PROPOSAL, APPROVE_COMPLETION, ACCEPT_REOPEN, REJECT_REOPEN]
+    RequestStatus:
+      type: string
+      description: |
+        SUBMITTED -> (admin review) APPROVED | REJECTED | PENDING_INFO -> ASSIGNED -> WORK_ACCEPTED | WORK_REJECTED (admin reassigns)
+        -> TRAVELLING -> WORK_STARTED <-> WORK_BLOCKED -> WORK_COMPLETED_AWAITING_CONFIRMATION
+        -> TENANT_ACCEPTED (tenant rejection returns to WORK_STARTED) -> CLOSED (admin approval)
+        -> REOPEN_REQUESTED (within 24h of closure) -> ASSIGNED.
+      enum:
+        - SUBMITTED
+        - PENDING_INFO
+        - APPROVED
+        - REJECTED
+        - ASSIGNED
+        - WORK_ACCEPTED
+        - WORK_REJECTED
+        - TRAVELLING
+        - WORK_STARTED
+        - WORK_BLOCKED
+        - WORK_COMPLETED_AWAITING_CONFIRMATION
+        - TENANT_ACCEPTED
+        - CLOSED
+        - REOPEN_REQUESTED
+    Attachment:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        fileName: { type: string }
+        contentType: { type: string }
+        sizeBytes: { type: integer, format: int64 }
+    RequestSummary:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        referenceNo: { type: string }
+        category: { type: string }
+        priority: { $ref: '#/components/schemas/Priority' }
+        status: { $ref: '#/components/schemas/RequestStatus' }
+        residentName: { type: string }
+        location: { type: string }
+        technicianName: { type: string }
+        scheduledAt: { type: string, format: date-time }
+        createdAt: { type: string, format: date-time }
+    RequestPage:
+      allOf:
+        - $ref: '#/components/schemas/PageMeta'
+        - type: object
+          properties:
+            content: { type: array, items: { $ref: '#/components/schemas/RequestSummary' } }
+    Appointment:
+      type: object
+      properties:
+        scheduledAt: { type: string, format: date-time }
+        durationMinutes: { type: integer }
+    RequestDetail:
+      allOf:
+        - $ref: '#/components/schemas/RequestSummary'
+        - type: object
+          properties:
+            description: { type: string }
+            resident: { $ref: '#/components/schemas/Resident' }
+            apartment: { $ref: '#/components/schemas/Apartment' }
+            technician: { $ref: '#/components/schemas/Technician' }
+            preferredTime: { type: string, format: date-time }
+            appointment: { $ref: '#/components/schemas/Appointment' }
+            attachments: { type: array, items: { $ref: '#/components/schemas/Attachment' } }
+            closedAt: { type: string, format: date-time }
+            reopenDeadline: { type: string, format: date-time, description: closedAt + 24h }
+            pendingProposal: { $ref: '#/components/schemas/AppointmentProposal' }
+    ReviewDecision:
+      type: object
+      required: [decision]
+      properties:
+        decision: { type: string, enum: [APPROVE, REJECT, REQUEST_INFO] }
+        reason: { type: string }
+    AssignmentWrite:
+      type: object
+      required: [technicianId]
+      properties:
+        technicianId: { type: string, format: uuid }
+        reason: { type: string }
+        appointment: { $ref: '#/components/schemas/Appointment' }
+    CommentBody:
+      type: object
+      properties:
+        comment: { type: string }
+    ReopenDecision:
+      type: object
+      required: [accept]
+      properties:
+        accept: { type: boolean }
+        reason: { type: string }
+    HistoryEntry:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        type: { type: string, enum: [STATUS, ASSIGNMENT, APPOINTMENT, DECISION, REVIEW, REOPEN] }
+        fromStatus: { $ref: '#/components/schemas/RequestStatus' }
+        toStatus: { $ref: '#/components/schemas/RequestStatus' }
+        actor: { type: string }
+        actorRole: { type: string }
+        reason: { type: string }
+        occurredAt: { type: string, format: date-time }
+    WorkLogEntry:
+      type: object
+      properties:
+        event: { type: string, enum: [ACCEPTED, REJECTED, TRAVELLING, STARTED, BLOCKED, RESUMED, COMPLETED] }
+        details: { type: string }
+        occurredAt: { type: string, format: date-time }
+    WorkLog:
+      type: object
+      properties:
+        entries: { type: array, items: { $ref: '#/components/schemas/WorkLogEntry' } }
+        elapsedMinutes: { type: integer, description: From work start to completion }
+        completionComment: { type: string }
+        completedAt: { type: string, format: date-time }
+
+    # Appointments
+    AppointmentWrite:
+      type: object
+      required: [scheduledAt]
+      properties:
+        scheduledAt: { type: string, format: date-time }
+        durationMinutes: { type: integer }
+    ProposalStatus:
+      type: string
+      enum: [PENDING, APPLIED, REJECTED]
+    DecisionState:
+      type: string
+      enum: [PENDING, APPROVED, REJECTED]
+    AppointmentProposal:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        requestId: { type: string, format: uuid }
+        currentTime: { type: string, format: date-time }
+        proposedTime: { type: string, format: date-time }
+        proposedBy: { type: string }
+        reason: { type: string }
+        status: { $ref: '#/components/schemas/ProposalStatus' }
+        tenantDecision: { $ref: '#/components/schemas/DecisionState' }
+        adminDecision: { $ref: '#/components/schemas/DecisionState' }
+        decidedBy: { type: string }
+        createdAt: { type: string, format: date-time }
+    ProposalPage:
+      allOf:
+        - $ref: '#/components/schemas/PageMeta'
+        - type: object
+          properties:
+            content: { type: array, items: { $ref: '#/components/schemas/AppointmentProposal' } }
+    ProposalDecision:
+      type: object
+      required: [decision]
+      properties:
+        decision: { type: string, enum: [APPROVE, REJECT] }
+        reason: { type: string }
+
+    # Notifications, reports, audit, dashboard
+    Notification:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        event: { type: string }
+        message: { type: string }
+        requestId: { type: string, format: uuid }
+        read: { type: boolean }
+        createdAt: { type: string, format: date-time }
+    NotificationPage:
+      allOf:
+        - $ref: '#/components/schemas/PageMeta'
+        - type: object
+          properties:
+            content: { type: array, items: { $ref: '#/components/schemas/Notification' } }
+    ReportResult:
+      type: object
+      properties:
+        columns: { type: array, items: { type: string } }
+        rows:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    AuditEvent:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        actorId: { type: string, format: uuid }
+        actorName: { type: string }
+        action: { type: string }
+        entityType: { type: string }
+        entityId: { type: string, format: uuid }
+        details: { type: object, additionalProperties: true }
+        occurredAt: { type: string, format: date-time }
+    AuditEventPage:
+      allOf:
+        - $ref: '#/components/schemas/PageMeta'
+        - type: object
+          properties:
+            content: { type: array, items: { $ref: '#/components/schemas/AuditEvent' } }
+    DashboardSummary:
+      type: object
+      properties:
+        requestsByStatus:
+          type: object
+          additionalProperties: { type: integer }
+        pendingReview: { type: integer }
+        pendingCompletionApproval: { type: integer }
+        pendingProposals: { type: integer }
+        availableTechnicians: { type: integer }
